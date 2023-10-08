@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://oue7aoqcfilu"
-path="res://.godot/imported/nintendo-nes-font.ttf-571319aabc6a5d94f37609afc8bd4a61.fontdata"
+path="res://.godot/imported/nintendo-nes-font.ttf-ab94c8785cc275740f0b6f0f02e16b30.fontdata"
 
 [deps]
 
-source_file="res://assets/Theme/nintendo-nes-font.ttf"
-dest_files=["res://.godot/imported/nintendo-nes-font.ttf-571319aabc6a5d94f37609afc8bd4a61.fontdata"]
+source_file="res://Media/Theme/nintendo-nes-font.ttf"
+dest_files=["res://.godot/imported/nintendo-nes-font.ttf-ab94c8785cc275740f0b6f0f02e16b30.fontdata"]
 
 [params]
 

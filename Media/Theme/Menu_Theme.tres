@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://b8433dadexmlv"]
 
-[ext_resource type="FontFile" uid="uid://oue7aoqcfilu" path="res://assets/Theme/nintendo-nes-font.ttf" id="1_nfa64"]
+[ext_resource type="FontFile" uid="uid://oue7aoqcfilu" path="res://Media/Theme/nintendo-nes-font.ttf" id="1_nfa64"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cc5b7"]
 

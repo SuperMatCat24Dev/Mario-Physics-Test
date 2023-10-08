@@ -35,8 +35,8 @@ enabled=PackedStringArray("res://addons/finite_state_machine/plugin.cfg")
 
 [gui]
 
-theme/custom="res://assets/Theme/Menu_Theme.tres"
-theme/custom_font="res://assets/Theme/nintendo-nes-font.ttf"
+theme/custom="res://Media/Theme/Menu_Theme.tres"
+theme/custom_font="res://Media/Theme/nintendo-nes-font.ttf"
 
 [input]
 

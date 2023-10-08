@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Entites/Player/WallState.gd" id="8_dwhi6"]
 [ext_resource type="Script" path="res://Entites/Player/PoundState.gd" id="9_v0fhl"]
 [ext_resource type="Script" path="res://Entites/Player/Dive.gd" id="10_yadw2"]
-[ext_resource type="Texture2D" uid="uid://c0h5dykdllrs5" path="res://assets/player/Regular.png" id="11_bjkxv"]
+[ext_resource type="Texture2D" uid="uid://c0h5dykdllrs5" path="res://Media/player/Regular.png" id="11_0xo5n"]
 [ext_resource type="PackedScene" uid="uid://drx1ydn2jmpgo" path="res://Entites/Player/context_bubble.tscn" id="12_llwfq"]
 
 [sub_resource type="Animation" id="Animation_y7ugh"]
@@ -449,7 +449,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("11_bjkxv")
+texture = ExtResource("11_0xo5n")
 hframes = 7
 vframes = 27
 

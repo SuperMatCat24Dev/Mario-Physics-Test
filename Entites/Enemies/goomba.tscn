@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://b70hrl7pnkajb"]
 
 [ext_resource type="Script" path="res://Entites/Enemies/enemy.gd" id="1_bp5oa"]
-[ext_resource type="Texture2D" uid="uid://baiggycdadohh" path="res://assets/NES - Super Mario Bros - Enemies & Bosses.png" id="1_ghpak"]
 [ext_resource type="PackedScene" uid="uid://pdnw4yxbo6sv" path="res://Entites/damager.tscn" id="2_2ff5v"]
+[ext_resource type="Texture2D" uid="uid://baiggycdadohh" path="res://Media/NES - Super Mario Bros - Enemies & Bosses.png" id="2_j3cnv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpuq3"]
 size = Vector2(14, 14)
@@ -84,7 +84,7 @@ SPEED = 25.0
 animation_player = NodePath("AnimationPlayer")
 
 [node name="Nes-SuperMarioBros-Enemies&Bosses" type="Sprite2D" parent="."]
-texture = ExtResource("1_ghpak")
+texture = ExtResource("2_j3cnv")
 hframes = 27
 vframes = 31
 

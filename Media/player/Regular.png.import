@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2uod35h0yr7h"
-path="res://.godot/imported/capa_virtual_joystick.png-42583e02b89cfdddc774b060907550d3.ctex"
+uid="uid://c0h5dykdllrs5"
+path="res://.godot/imported/Regular.png-65c4a2e69c7eaf4c09a3600f42538800.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/capa_virtual_joystick.png"
-dest_files=["res://.godot/imported/capa_virtual_joystick.png-42583e02b89cfdddc774b060907550d3.ctex"]
+source_file="res://Media/player/Regular.png"
+dest_files=["res://.godot/imported/Regular.png-65c4a2e69c7eaf4c09a3600f42538800.ctex"]
 
 [params]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://lyfmnvvrvhsf" path="res://Entites/Player/player.tscn" id="1_isb4b"]
 [ext_resource type="Script" path="res://world.gd" id="1_me6y0"]
-[ext_resource type="TileSet" uid="uid://hy5fdq83hlqi" path="res://assets/simple_tileset/simple_tileset.tres" id="2_w03c7"]
+[ext_resource type="TileSet" uid="uid://hy5fdq83hlqi" path="res://Media/simple_tileset/simple_tileset.tres" id="3_k0b5i"]
 [ext_resource type="PackedScene" uid="uid://del5cwa6qa0cl" path="res://Tiles/sign.tscn" id="4_k5eq3"]
 [ext_resource type="PackedScene" uid="uid://dmvw5mres7ajw" path="res://Tiles/world_area.tscn" id="5_cb1ky"]
 [ext_resource type="PackedScene" uid="uid://cy42jlp3dhbc6" path="res://Tiles/spring.tscn" id="6_tf82l"]
@@ -33,7 +33,7 @@ position = Vector2(-1192, -232)
 collision_mask = 9
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("2_w03c7")
+tile_set = ExtResource("3_k0b5i")
 format = 2
 layer_0/name = "Scenes"
 layer_0/z_index = 2

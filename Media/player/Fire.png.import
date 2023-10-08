@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0h5dykdllrs5"
-path="res://.godot/imported/Regular.png-1f3bf9b65976f1bd0d20c55fd719e9bd.ctex"
+uid="uid://ch3xmb75xiiv6"
+path="res://.godot/imported/Fire.png-45c525ff8d25de9346f963608a51eb81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Regular.png"
-dest_files=["res://.godot/imported/Regular.png-1f3bf9b65976f1bd0d20c55fd719e9bd.ctex"]
+source_file="res://Media/player/Fire.png"
+dest_files=["res://.godot/imported/Fire.png-45c525ff8d25de9346f963608a51eb81.ctex"]
 
 [params]
 

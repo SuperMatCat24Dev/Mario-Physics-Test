@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch3xmb75xiiv6"
-path="res://.godot/imported/Fire.png-d13f34796b2509ec9b896483564aca62.ctex"
+uid="uid://2uod35h0yr7h"
+path="res://.godot/imported/capa_virtual_joystick.png-86ecd730b52b15a38db5e7d02279d816.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/Fire.png"
-dest_files=["res://.godot/imported/Fire.png-d13f34796b2509ec9b896483564aca62.ctex"]
+source_file="res://Media/capa_virtual_joystick.png"
+dest_files=["res://.godot/imported/capa_virtual_joystick.png-86ecd730b52b15a38db5e7d02279d816.ctex"]
 
 [params]
 
