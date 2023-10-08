@@ -4,9 +4,6 @@ class_name Player
 @onready var sprite_animations: AnimationPlayer = $SpriteAnimations
 @onready var sprite: Sprite2D = $Sprite
 
-const SPEED = 100.0
-const JUMP_VELOCITY = -300.0
-
 var triplejump = 0
 var triplejumpbypass = false
 

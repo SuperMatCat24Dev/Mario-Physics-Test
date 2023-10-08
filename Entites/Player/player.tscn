@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://lyfmnvvrvhsf"]
+[gd_scene load_steps=35 format=3 uid="uid://lyfmnvvrvhsf"]
 
 [ext_resource type="Script" path="res://Entites/Player/player.gd" id="1_nx08j"]
 [ext_resource type="Script" path="res://addons/finite_state_machine/scripts/finite_state_machine.gd" id="2_4u6rg"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Entites/Player/PoundState.gd" id="9_v0fhl"]
 [ext_resource type="Script" path="res://Entites/Player/Dive.gd" id="10_yadw2"]
 [ext_resource type="Texture2D" uid="uid://c0h5dykdllrs5" path="res://Media/player/Regular.png" id="11_0xo5n"]
+[ext_resource type="Script" path="res://Entites/Player/RollState.gd" id="11_oqnmu"]
 [ext_resource type="PackedScene" uid="uid://drx1ydn2jmpgo" path="res://Entites/Player/context_bubble.tscn" id="12_llwfq"]
 
 [sub_resource type="Animation" id="Animation_y7ugh"]
@@ -93,6 +94,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_1fm2v"]
 resource_name = "DoubleJump"
 length = 0.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -157,6 +159,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_ciloa"]
 resource_name = "Jump"
 length = 0.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -365,14 +368,14 @@ script = ExtResource("1_nx08j")
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 unique_name_in_owner = true
 script = ExtResource("2_4u6rg")
-current_state = NodePath("WalkState")
+current_state = NodePath("JumpState")
 
 [node name="WalkState" type="Node" parent="FiniteStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("3_1h1xd")
 speed = 100.0
 acceleration = 275.0
-deacceleration = 650.0
+deacceleration = 550.0
 turnacceleration = 600.0
 
 [node name="RunState" type="Node" parent="FiniteStateMachine"]
@@ -380,7 +383,7 @@ unique_name_in_owner = true
 script = ExtResource("4_7c8ek")
 speed = 175.0
 acceleration = 275.0
-deacceleration = 650.0
+deacceleration = 550.0
 turnacceleration = 600.0
 
 [node name="FallState" type="Node" parent="FiniteStateMachine"]
@@ -417,6 +420,9 @@ one_shot = true
 [node name="DiveState" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("10_yadw2")
 dive_speed = 225
+
+[node name="RollState" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("11_oqnmu")
 
 [node name="LeftFar" type="RayCast2D" parent="."]
 position = Vector2(-4, -3)

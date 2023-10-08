@@ -47,6 +47,8 @@ func on_input(event: InputEvent) -> void:
 		speed - %WalkState.speed
 	if event.is_action_pressed("Down"):
 		change_state("PoundState")
+	elif event.is_action_pressed("Dive"):
+		change_state("DiveState")
 
 # Called every frame when this state is active.
 func on_process(delta: float) -> void:

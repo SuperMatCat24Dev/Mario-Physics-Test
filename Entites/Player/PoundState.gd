@@ -11,7 +11,7 @@ func on_enter() -> void:
 	large_jump = false
 	dive_safe = false
 	can_cancel = false
-	character.velocity = Vector2.ZERO
+	character.velocity.y = 0
 	await character.play_animation("GroundPound", 1.8)
 	if dive_safe: return
 	can_cancel = true
@@ -26,6 +26,7 @@ func on_process(delta: float) -> void:
 
 # Called every physics frame when this state is active.
 func on_physics_process(delta: float) -> void:
+	character.velocity.x = move_toward(character.velocity.x, 0, 1000 * delta)
 	character.move_and_slide()
 	if character.is_on_floor() and not large_jump:
 		SoundPlayer.play_sound("Bump")
@@ -37,9 +38,6 @@ func on_physics_process(delta: float) -> void:
 func on_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Up") and can_cancel:
 		change_state("FallState")
-	elif event.is_action_pressed("Jump") and not can_cancel:
-		dive_safe = true
-		change_state("DiveState")
 	elif event.is_action_pressed("Jump") and large_jump:
 		character.triplejumpbypass = true
 		character.triplejump = 2

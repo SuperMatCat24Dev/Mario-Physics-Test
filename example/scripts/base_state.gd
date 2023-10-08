@@ -33,7 +33,7 @@ func on_process(delta: float) -> void:
 		character.play_animation("Turn")
 	elif substate == WALK:
 		character.play_animation("Walk", character.velocity.x / 65)
-	else:
+	elif abs(character.velocity.x) <= 25:
 		character.play_animation("Idle")
 	
 	if direction != 0:

@@ -28,6 +28,8 @@ func on_input(event: InputEvent) -> void:
 		speed - %WalkState.speed
 	if event.is_action_pressed("Down"):
 		change_state("PoundState")
+	elif event.is_action_pressed("Dive"):
+		change_state("DiveState")
 
 # Called every frame when this state is active.
 func on_process(delta: float) -> void:
@@ -51,12 +53,16 @@ func on_process(delta: float) -> void:
 # Called every physics frame when this state is active.
 func on_physics_process(_delta: float) -> void:
 	character.move_and_slide()
-	if not %SpriteAnimations.current_animation == "DoubleJump" and not %SpriteAnimations.current_animation == "Spin":
-		character.play_animation("Jump")
 	handle_wall_slide()
+	
 	if character.is_on_floor():
 		$"../../TripleJumpTimer".start()
 		change_state("WalkState")
+	
+	if %SpriteAnimations.current_animation == "Jump": return
+	elif %SpriteAnimations.current_animation == "DoubleJump": return
+	elif %SpriteAnimations.current_animation == "Spin": return
+	character.play_animation("Jump")
 
 func substate_check(dir):
 	if dir == 1 and character.velocity.x >= 0 or dir == -1 and character.velocity.x <= 0:

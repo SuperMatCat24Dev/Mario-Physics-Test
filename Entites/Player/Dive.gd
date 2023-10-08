@@ -8,11 +8,11 @@ func on_enter() -> void:
 	character.play_animation("Dive")
 	var direction := Input.get_axis("Left", "Right")
 	if direction:
-		character.velocity.x = dive_speed * direction
+		speed_cap(dive_speed, direction)
 	elif $"../../Sprite".flip_h == true: 
-		character.velocity.x = -dive_speed
+		speed_cap(dive_speed, -1)
 	else: 
-		character.velocity.x = dive_speed
+		speed_cap(dive_speed, 1)
 	await get_tree().process_frame
 	flip()
 	character.velocity.y = -125
@@ -27,19 +27,22 @@ func on_process(delta: float) -> void:
 func on_physics_process(delta: float) -> void:
 	character.move_and_slide()
 	if character.is_on_floor():
-		change_state("WalkState")
+		change_state("RollState")
 	elif character.is_on_wall():
-		change_state("WallState")
-
+		change_state("FallState")
 
 # Called when there is an input event while this state is active.
 func on_input(event: InputEvent) -> void:
 	pass
 
-
 # Called when the state machine exits this state.
 func on_exit() -> void:
 	pass
+
+func speed_cap(amount, dir):
+	if abs(character.velocity.x) < amount:
+		character.velocity.x = amount * dir
+	
 
 func flip():
 	if character.velocity.x < 0:
