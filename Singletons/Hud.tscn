@@ -1,0 +1,179 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdi6pr0t7s3ia"]
+
+[ext_resource type="Script" path="res://Singletons/Hud.gd" id="1_cxceq"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5uipy"]
+load_path = "res://.godot/imported/Hud.png-fdf8c0706afe1657ddfc8db4b7f50139.ctex"
+
+[sub_resource type="Animation" id="Animation_8arp1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaText:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_heydg"]
+resource_name = "Show"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaText:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 2.4, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mij77"]
+_data = {
+"RESET": SubResource("Animation_8arp1"),
+"Show": SubResource("Animation_heydg")
+}
+
+[node name="Hud" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_cxceq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 29.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Lives" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "LIVES
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coins" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "COINS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" type="BoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/HealthBar"]
+position = Vector2(26, 11)
+texture = SubResource("CompressedTexture2D_5uipy")
+hframes = 17
+vframes = 2
+
+[node name="Score" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "TIME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseScreen" type="ColorRect" parent="."]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.458824)
+
+[node name="Panel" type="Panel" parent="PauseScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -82.0
+offset_right = 92.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseScreen/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Unpause" type="Button" parent="PauseScreen/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "UNPAUSE"
+
+[node name="Quit" type="Button" parent="PauseScreen/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "QUIT
+"
+
+[node name="AreaHandler" type="VBoxContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = -8.0
+offset_bottom = 56.0
+grow_horizontal = 2
+
+[node name="AreaText" type="Label" parent="AreaHandler"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "OVERWORLD"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AreaHandler"]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_mij77")
+}
+
+[connection signal="pressed" from="PauseScreen/Panel/VBoxContainer/Unpause" to="." method="_on_unpause_pressed"]
+[connection signal="pressed" from="PauseScreen/Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

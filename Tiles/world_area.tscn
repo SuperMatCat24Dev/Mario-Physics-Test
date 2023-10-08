@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmvw5mres7ajw"]
+
+[ext_resource type="Script" path="res://Tiles/world_area.gd" id="1_ib2ii"]
+
+[node name="WorldArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ib2ii")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

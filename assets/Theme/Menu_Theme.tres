@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b8433dadexmlv"]
+
+[ext_resource type="FontFile" uid="uid://oue7aoqcfilu" path="res://assets/Theme/nintendo-nes-font.ttf" id="1_nfa64"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cc5b7"]
+
+[resource]
+Button/colors/font_focus_color = Color(0.94902, 0.94902, 0.0705882, 1)
+Button/colors/font_hover_color = Color(0.94902, 0.745098, 0, 1)
+Button/colors/font_pressed_color = Color(1, 0.52549, 0.337255, 1)
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("1_nfa64")
+CheckBox/fonts/font = ExtResource("1_nfa64")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 0
+Label/font_sizes/font_size = 8
+Label/fonts/font = ExtResource("1_nfa64")
+Label/styles/normal = SubResource("StyleBoxEmpty_cc5b7")
+RichTextLabel/font_sizes/bold_font_size = 8
+RichTextLabel/font_sizes/bold_italics_font_size = 8
+RichTextLabel/font_sizes/italics_font_size = 8
+RichTextLabel/font_sizes/mono_font_size = 8
+RichTextLabel/font_sizes/normal_font_size = 8
+RichTextLabel/fonts/bold_font = ExtResource("1_nfa64")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_nfa64")
+RichTextLabel/fonts/italics_font = ExtResource("1_nfa64")
+RichTextLabel/fonts/mono_font = ExtResource("1_nfa64")
+RichTextLabel/fonts/normal_font = ExtResource("1_nfa64")
+TextEdit/font_sizes/font_size = 8
+TextEdit/fonts/font = ExtResource("1_nfa64")
+VBoxContainer/constants/separation = 3

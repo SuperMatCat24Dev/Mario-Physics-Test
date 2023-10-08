@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://cy42jlp3dhbc6"]
+
+[ext_resource type="Script" path="res://Tiles/spring.gd" id="1_poaq2"]
+[ext_resource type="Texture2D" uid="uid://djb1b0e702asw" path="res://Tiles/Wii U - Super Mario Maker - Tileset SMB1.png" id="1_x38a0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ex1dh"]
+size = Vector2(16, 8)
+
+[sub_resource type="Animation" id="Animation_yoanw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WiiU-SuperMarioMaker-TilesetSmb1:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(222, 613, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_5v2uu"]
+resource_name = "bounce"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WiiU-SuperMarioMaker-TilesetSmb1:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(256, 613, 16, 16), Rect2(239, 613, 16, 16), Rect2(222, 613, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tnbj1"]
+_data = {
+"RESET": SubResource("Animation_yoanw"),
+"bounce": SubResource("Animation_5v2uu")
+}
+
+[node name="Spring" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_poaq2")
+
+[node name="WiiU-SuperMarioMaker-TilesetSmb1" type="Sprite2D" parent="."]
+texture = ExtResource("1_x38a0")
+region_enabled = true
+region_rect = Rect2(222, 613, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ex1dh")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ex1dh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tnbj1")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

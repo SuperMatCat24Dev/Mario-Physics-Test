@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://b70hrl7pnkajb"]
+
+[ext_resource type="Script" path="res://Entites/Enemies/enemy.gd" id="1_bp5oa"]
+[ext_resource type="Texture2D" uid="uid://baiggycdadohh" path="res://assets/NES - Super Mario Bros - Enemies & Bosses.png" id="1_ghpak"]
+[ext_resource type="PackedScene" uid="uid://pdnw4yxbo6sv" path="res://Entites/damager.tscn" id="2_2ff5v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpuq3"]
+size = Vector2(14, 14)
+
+[sub_resource type="Animation" id="Animation_c2hsw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nes-SuperMarioBros-Enemies&Bosses:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_52523"]
+resource_name = "die"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nes-SuperMarioBros-Enemies&Bosses:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6cdb3"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nes-SuperMarioBros-Enemies&Bosses:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yco3h"]
+_data = {
+"RESET": SubResource("Animation_c2hsw"),
+"die": SubResource("Animation_52523"),
+"idle": SubResource("Animation_6cdb3")
+}
+
+[node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("animation_player")]
+z_index = 5
+collision_layer = 4
+script = ExtResource("1_bp5oa")
+SPEED = 25.0
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Nes-SuperMarioBros-Enemies&Bosses" type="Sprite2D" parent="."]
+texture = ExtResource("1_ghpak")
+hframes = 27
+vframes = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qpuq3")
+
+[node name="Damager" parent="." instance=ExtResource("2_2ff5v")]
+bounce = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Damager"]
+shape = SubResource("RectangleShape2D_qpuq3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_yco3h")
+}

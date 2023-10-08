@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://drx1ydn2jmpgo"]
+
+[ext_resource type="Script" path="res://Entites/Player/context_bubble.gd" id="1_3fxf4"]
+[ext_resource type="Texture2D" uid="uid://ckdc8x1cwguct" path="res://Tiles/52571.png" id="1_aieu0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sbp18"]
+radius = 24.0
+
+[node name="ContextBubble" type="Area2D"]
+visible = false
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_3fxf4")
+
+[node name="52571" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_aieu0")
+region_enabled = true
+region_rect = Rect2(80, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sbp18")
+debug_color = Color(0.713726, 0.341176, 0.870588, 0.419608)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

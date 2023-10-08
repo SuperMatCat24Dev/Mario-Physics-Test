@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpqgbjopxg2di"]
+
+[ext_resource type="Script" path="res://Singletons/sound_player.gd" id="1_oc1gl"]
+[ext_resource type="AudioStream" uid="uid://gbr10acifvx3" path="res://Sounds/Sfx/Coin.wav" id="2_rdnae"]
+[ext_resource type="AudioStream" uid="uid://cdt6poh2nc260" path="res://Sounds/Sfx/smb_jump-small.wav" id="3_6wqrh"]
+[ext_resource type="AudioStream" uid="uid://g82u1h8ov41x" path="res://Sounds/Sfx/smb_bump.wav" id="4_ntd36"]
+
+[node name="SoundPlayer" type="Node"]
+process_mode = 3
+script = ExtResource("1_oc1gl")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Music"]
+bus = &"Music"
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="Coin" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("2_rdnae")
+bus = &"Sfx"
+
+[node name="Jump" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("3_6wqrh")
+bus = &"Sfx"
+
+[node name="Bump" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("4_ntd36")
+bus = &"Sfx"
+
+[connection signal="finished" from="Music/Music" to="." method="_on_music_finished"]

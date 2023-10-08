@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://q723jnrjng41"]
+
+[ext_resource type="Texture2D" uid="uid://ckdc8x1cwguct" path="res://Tiles/52571.png" id="1_7kfix"]
+[ext_resource type="Script" path="res://Tiles/coin.gd" id="1_588t6"]
+
+[sub_resource type="Animation" id="Animation_u34dw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_it2n3"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(1, 1), Vector2i(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sq6fw"]
+_data = {
+"RESET": SubResource("Animation_u34dw"),
+"default": SubResource("Animation_it2n3")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o2v5k"]
+radius = 8.0
+
+[node name="Coin" type="Area2D" groups=["Coin"]]
+z_index = 4
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_588t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7kfix")
+hframes = 42
+vframes = 47
+frame = 42
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_sq6fw")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o2v5k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
