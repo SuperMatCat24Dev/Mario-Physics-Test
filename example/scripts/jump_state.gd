@@ -13,7 +13,7 @@ var substate = WALK
 @export var deacceleration: float = 300.0
 @export var turnacceleration: float = 300.0
 
-var velocitymulti := 1.0
+var anim = 0
 
 func on_enter() -> void:
 	if Input.is_action_pressed("Run"):
@@ -22,23 +22,28 @@ func on_enter() -> void:
 		speed = %WalkState.speed
 	
 	if not character.triplejumpbypass:
-		if character.triplejump <= 3 and %FiniteStateMachine.previous_state == %RunState and abs(character.velocity.x) >= %RunState.speed - 25:
+		if character.triplejump <= 3 and %FiniteStateMachine.previous_state == %RunState and abs(character.velocity.x) >= %RunState.speed - 50:
 			character.triplejump += 1
 		else:
 			character.triplejump = 1
+	
 	if character.triplejump == 1:
 		character.velocity.y = jump_velocity
 		SoundPlayer.play_sound("Jump")
+		anim = 1
 	elif character.triplejump == 2:
 		character.velocity.y = jump_velocity * 1.15
 		SoundPlayer.play_sound("Jump", 1.125)
-	elif character.triplejump == 3:
-		character.velocity.y = jump_velocity * 1.225
+		anim = 2
+	else:
+		character.velocity.y = jump_velocity * 1.22
 		SoundPlayer.play_sound("Jump", 1.25)
-	character.velocity.y -= abs(character.velocity.x) / 4
-	character.velocity.y *= velocitymulti
-	velocitymulti = 1
+		anim = 3
+	
+	character.velocity.y -= abs(character.velocity.x) / 6
 	character.triplejumpbypass = false
+	
+	call_deferred("animate")
 
 func on_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Run"):
@@ -53,7 +58,7 @@ func on_input(event: InputEvent) -> void:
 # Called every frame when this state is active.
 func on_process(delta: float) -> void:
 	var direction := Input.get_axis("Left", "Right")
-	animate()
+	
 	substate_check(direction)
 	move(delta, direction)
 	
@@ -61,9 +66,9 @@ func on_process(delta: float) -> void:
 		if character.triplejump == 1:
 			character.velocity.y /= 1.85
 		elif character.triplejump == 2:
-			character.velocity.y /= 1.55
+			character.velocity.y /= 1.65
 		elif character.triplejump == 3:
-			character.velocity.y /= 1.4
+			character.velocity.y /= 1.5
 		change_state("FallState")
 	if character.is_on_floor():
 		change_state("WalkState")
@@ -115,9 +120,10 @@ func ceiling_detection():
 				break
 
 func animate():
-	if character.triplejump == 1:
+	print(anim)
+	if anim == 1:
 		character.play_animation("Jump")
-	elif character.triplejump == 2:
+	elif anim == 2:
 		character.play_animation("DoubleJump")
-	elif character.triplejump == 3:
+	else:
 		character.play_animation("Spin", 1.5)

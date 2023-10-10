@@ -362,13 +362,13 @@ size = Vector2(8, 10)
 z_index = 10
 collision_layer = 2
 floor_snap_length = 4.0
-safe_margin = 0.15
+safe_margin = 0.2
 script = ExtResource("1_nx08j")
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 unique_name_in_owner = true
 script = ExtResource("2_4u6rg")
-current_state = NodePath("JumpState")
+current_state = NodePath("WalkState")
 
 [node name="WalkState" type="Node" parent="FiniteStateMachine"]
 unique_name_in_owner = true
@@ -388,7 +388,7 @@ turnacceleration = 600.0
 
 [node name="FallState" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("5_0qk3c")
-fallspeed = 10
+fallspeed = 100
 maxfallspeed = 600.0
 acceleration = 200.0
 deacceleration = 200.0
@@ -397,7 +397,7 @@ turnacceleration = 500.0
 [node name="JumpState" type="Node" parent="FiniteStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("6_o4gnl")
-jump_velocity = -350
+jump_velocity = -370
 speed = 100.0
 acceleration = 200.0
 turnacceleration = 450.0

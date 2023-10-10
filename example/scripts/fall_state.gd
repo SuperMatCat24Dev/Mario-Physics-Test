@@ -40,7 +40,7 @@ func on_process(delta: float) -> void:
 	
 	character.velocity.y += gravity * delta
 	if character.velocity.y >= 0:
-		character.velocity.y += fallspeed
+		character.velocity.y += fallspeed * delta
 	if character.velocity.y >= maxfallspeed:
 		character.velocity.y = maxfallspeed
 	

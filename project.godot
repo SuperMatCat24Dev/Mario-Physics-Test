@@ -26,8 +26,8 @@ Transitions="*res://Singletons/transitions.tscn"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/size/mode=3
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 
@@ -99,6 +99,7 @@ Dive={
 
 common/physics_ticks_per_second=144
 common/max_physics_steps_per_frame=12
+2d/default_gravity=1100.0
 
 [rendering]
 

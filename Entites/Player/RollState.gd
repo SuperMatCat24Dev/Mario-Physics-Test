@@ -4,15 +4,17 @@ var direction = 0
 
 # Called when the state machine enters this state.
 func on_enter() -> void:
-	pass
+	direction = Input.get_axis("Left", "Right")
+	if direction != 0:
+		character.flip_sprite(direction < 0)
 
 
 # Called every frame when this state is active.
 func on_process(delta: float) -> void:
-	character.play_animation("Spin", character.velocity.x / 80)
-	direction = Input.get_axis("Left", "Right")
-	if direction != 0:
-		character.flip_sprite(direction < 0)
+	var dir : int
+	if $"../../Sprite".flip_h == true: dir = 1
+	else: dir = -1
+	character.play_animation("Spin", character.velocity.x / 80 * dir * -1)
 
 
 func on_physics_process(delta: float) -> void:
