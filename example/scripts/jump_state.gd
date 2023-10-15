@@ -21,12 +21,6 @@ func on_enter() -> void:
 	else:
 		speed = %WalkState.speed
 	
-	if not character.triplejumpbypass:
-		if character.triplejump <= 3 and %FiniteStateMachine.previous_state == %RunState and abs(character.velocity.x) >= %RunState.speed - 50:
-			character.triplejump += 1
-		else:
-			character.triplejump = 1
-	
 	if character.triplejump == 1:
 		character.velocity.y = jump_velocity
 		SoundPlayer.play_sound("Jump")
@@ -36,9 +30,17 @@ func on_enter() -> void:
 		SoundPlayer.play_sound("Jump", 1.125)
 		anim = 2
 	else:
+		character.triplejump = 1
 		character.velocity.y = jump_velocity * 1.22
 		SoundPlayer.play_sound("Jump", 1.25)
 		anim = 3
+	
+	character.triplejump += 1
+	if not character.triplejumpbypass:
+		if %FiniteStateMachine.previous_state == %RunState and abs(character.velocity.x) >= %RunState.speed - 50:
+			character.triplejump += 1
+		else:
+			character.triplejump = 1
 	
 	character.velocity.y -= abs(character.velocity.x) / 6
 	character.triplejumpbypass = false
